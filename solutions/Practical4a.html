@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>Practical 4a</title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: #990073
+   }
+
+   pre .number {
+     color: #099;
+   }
+
+   pre .comment {
+     color: #998;
+     font-style: italic
+   }
+
+   pre .keyword {
+     color: #900;
+     font-weight: bold
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: #d14;
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<h1>Practical 4a</h1>
+
+<h2>Step 1</h2>
+
+<pre><code class="r">count &lt;- with(voting, percentage/100 * total)
+yvar &lt;- cbind(count, voting$total - count)
+</code></pre>
+
+<h2>Step 2</h2>
+
+<pre><code class="r">dref &lt;- gnm(yvar ~ -1 + Dref(origin, destination),
+            family = binomial, data = voting)
+</code></pre>
+
+<pre><code>## Initialising
+## Running main iterations........
+## Done
+</code></pre>
+
+<pre><code class="r">summary(dref)
+</code></pre>
+
+<pre><code>## 
+## Call:
+## 
+## gnm(formula = yvar ~ -1 + Dref(origin, destination), family = binomial, 
+##     data = voting)
+## 
+## Deviance Residuals: 
+##       Min         1Q     Median         3Q        Max  
+## -2.105360  -0.755564  -0.005821   0.468814   1.374291  
+## 
+## Coefficients:
+##                                 Estimate Std. Error z value Pr(&gt;|z|)    
+## Dref(origin, destination)delta1  0.25218         NA      NA       NA    
+## Dref(origin, destination)delta2  0.50453         NA      NA       NA    
+## Dref(., .).origin|destination1  -2.17780    0.13456 -16.184  &lt; 2e-16 ***
+## Dref(., .).origin|destination2  -1.13260    0.19074  -5.938 2.89e-09 ***
+## Dref(., .).origin|destination3  -1.95484    0.19228 -10.167  &lt; 2e-16 ***
+## Dref(., .).origin|destination4  -0.57825    0.18528  -3.121   0.0018 ** 
+## Dref(., .).origin|destination5   0.04045    0.06920   0.584   0.5589    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+## Std. Error is NA where coefficient has been constrained or is unidentified
+## 
+## Residual deviance: 21.221 on 19 degrees of freedom
+## AIC: 137.53
+## 
+## Number of iterations: 8
+</code></pre>
+
+<pre><code class="r">mosaic(dref, ~ origin + destination)
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-2"/> </p>
+
+<h2>Step 3</h2>
+
+<pre><code class="r">origin &lt;- as.numeric(as.character(voting$origin))
+destination &lt;- as.numeric(as.character(voting$destination))
+upward &lt;- origin &gt; destination
+drefUpward &lt;- gnm(yvar ~ -1 + Dref(origin, destination,
+                                   delta = ~ 1 + upward),
+                  family = binomial, data = voting)
+</code></pre>
+
+<pre><code>## Initialising
+## Running main iterations.........
+## Done
+</code></pre>
+
+<pre><code class="r">DrefWeights(drefUpward)
+</code></pre>
+
+<pre><code>## Refitting with parameters of first Dref weight constrained to zero
+</code></pre>
+
+<pre><code>## $origin
+##   upward    weight         se
+## 1  FALSE 0.4710283 0.07792736
+## 2   TRUE 0.4145214 0.06196350
+## 
+## $destination
+##   upward    weight         se
+## 1  FALSE 0.5289717 0.07792736
+## 2   TRUE 0.5854786 0.06196350
+</code></pre>
+
+<h2>Step 4</h2>
+
+<pre><code class="r">in1 &lt;- with(voting, origin != 1 &amp; destination == 1)
+out1 &lt;- with(voting, origin == 1 &amp; destination != 1)
+
+drefInOut1 &lt;- gnm(yvar ~ -1 + Dref(origin, destination,
+                                 delta = ~ 1 + in1 + out1),
+                family = binomial, data = voting)
+</code></pre>
+
+<pre><code>## Initialising
+## Running main iterations..........
+## Done
+</code></pre>
+
+<h2>Step 5</h2>
+
+<pre><code class="r">DrefWeights(drefInOut1)
+</code></pre>
+
+<pre><code>## Refitting with parameters of first Dref weight constrained to zero
+</code></pre>
+
+<pre><code>## $origin
+##     in1  out1    weight         se
+## 1 FALSE FALSE 0.4044959 0.05918141
+## 2 FALSE  TRUE 0.6044392 0.12371031
+## 3  TRUE FALSE 0.3900792 0.08134359
+## 
+## $destination
+##     in1  out1    weight         se
+## 1 FALSE FALSE 0.5955041 0.05918141
+## 2 FALSE  TRUE 0.3955608 0.12371031
+## 3  TRUE FALSE 0.6099208 0.08134359
+</code></pre>
+
+<pre><code class="r">drefOut1&lt;- gnm(yvar ~ -1 + Dref(origin, destination,
+                                         delta = ~ 1 + out1),
+                        family = binomial, data = voting)
+</code></pre>
+
+<pre><code>## Initialising
+## Running main iterations.........
+## Done
+</code></pre>
+
+<pre><code class="r">DrefWeights(drefOut1)
+</code></pre>
+
+<pre><code>## Refitting with parameters of first Dref weight constrained to zero
+</code></pre>
+
+<pre><code>## $origin
+##    out1    weight         se
+## 1 FALSE 0.3992031 0.04750643
+## 2  TRUE 0.5991570 0.11951340
+## 
+## $destination
+##    out1    weight         se
+## 1 FALSE 0.6007969 0.04750643
+## 2  TRUE 0.4008430 0.11951340
+</code></pre>
+
+<pre><code class="r">anova(dref, drefOut1, test = &quot;Chisq&quot;)
+</code></pre>
+
+<pre><code>## Analysis of Deviance Table
+## 
+## Model 1: yvar ~ Dref(origin, destination) - 1
+## Model 2: yvar ~ Dref(origin, destination, delta = ~1 + out1) - 1
+##   Resid. Df Resid. Dev Df Deviance Pr(&gt;Chi)
+## 1        19     21.221                     
+## 2        18     18.994  1    2.227   0.1356
+</code></pre>
+
+</body>
+
+</html>

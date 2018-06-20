@@ -1,0 +1,16 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+figure/*
+*.vrb
+*.bbl
+*.blg
+*.log
+*.nav
+*.snm
+*.gz
+*.toc
+*.Rproj
+*-concordance.tex
+gnmDayCourse.tex
