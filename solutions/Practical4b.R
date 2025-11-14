@@ -34,19 +34,22 @@ summary(mod1)
 mod2 <- update(mod1, constrain = "v", constrainTo = 1)
 summary(mod2)
 
-mod3 <- update(mod1, constrain = c("A", "v"), constrainTo = c(0, 1))
+# avoid bug in gnm 1.1-5 when constraining >1 parameter by name: 
+# use parameter indices instead, e.g. A = 0, v = 1
+mod3 <- update(mod1, constrain = c(1, 5), constrainTo = c(0, 1))
 summary(mod3)
 
-mod4 <- update(mod1, constrain = c("A", "K", "v"), constrainTo = c(0, 100, 1))
+# A = 0, K = 100, v = 1
+mod4 <- update(mod1, constrain = c(1, 2, 5), constrainTo = c(0, 100, 1))
 summary(mod4)
+
+# A = 0, K = 100
+mod5 <- update(mod1, constrain = c(1, 2), constrainTo = c(0, 100))
+summary(mod5)
 
 #' P.S.
 #' ----
 #'
-#' If assuming data are Gaussian, using nls makes more sense. Need to be more
-#' careful with starting values in this example.
+#' If assuming data are Gaussian, using nls makes more sense, e.g.
 mod1nls <- nls(y ~ A + (K - A)/(1 + exp(-B*(t - M)))^(1/v), data = dat,
                start = c(A = 0, K = 100, B = -0.5, M = 10, v = 1))
-
-mod1nls <- nls(y ~ A + (K - A)/(1 + exp(-B*(t - M)))^(1/v), data = dat,
-               start = c(A = 0, K = 100, B = -0.1, M = 15, v = 1))

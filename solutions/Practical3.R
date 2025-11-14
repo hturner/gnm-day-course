@@ -28,7 +28,6 @@ res <- residuals(LCmodel, type = "pearson")
 plot(res ~ Age, data = Canada)
 age <- as.numeric(as.character(Canada$Age))
 plot(res ~ Year, data = Canada, subset = age > 24 & age < 36)
-X11()
 plot(res ~ Year, data = Canada, subset = age > 49 & age < 66)
 
 

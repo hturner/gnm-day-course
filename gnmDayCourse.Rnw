@@ -81,7 +81,7 @@
 \usepackage[latin1]{inputenc}
 
 \title[]
-{Introduction to\\Generalized Nonlinear Models}
+{Generalized Nonlinear Models in R}
 
 \author
 {Heather Turner}
@@ -89,15 +89,14 @@
 \institute[University of Warwick]
 {
   \small
-  Independent statistical/R consultant\\
+  RSE Fellow/Associate Professor\\
   Department of Statistics, University of Warwick, UK
 }
 
 \date
-{Zurich, 2015--05--11\\
-{\small\color{red}{Updated for package changes 2018--06--20}}
+{Canberra, 2025--14--11
 \ \null\\
-{\tiny\emph{Copyright \copyright\ {Heather Turner 2018}}}}
+{\tiny\emph{Copyright \copyright\ {Heather Turner 2025}}}}
 
 
 
@@ -758,7 +757,15 @@ rc(MHtab, verbose = FALSE)
 % plot.assoc changes mar, so insert manually
 <<RC_update, results = "hide", fig.show = "hide">>=
 RC <- rc(MHtab, se = "jackknife", verbose = FALSE, ncpus = 1)
-plot(RC, conf.int = 0.95)
+# plot(RC, what = "rows", conf.int = 0.95)
+row <- RC$assoc$row[1:6,,] * sqrt(RC$assoc$phi[1])
+se <- sqrt(diag(RC$assoc$adj.covmats[,,1])[1:6])
+dotchart(rev(row), xlab = "Row scores", ylab = "SES")
+for (i in 1:6){
+    segments(x0 = rev(row)[i] + 1.96 * rev(se)[i], 
+             x1 = rev(row)[i] - 1.96 * rev(se)[i], 
+             y0 = i, y1 = i)
+}
 @
 \vspace{-24pt}
 \begin{center}
@@ -767,9 +774,9 @@ plot(RC, conf.int = 0.95)
 \end{frame}
 
 \begin{frame}[fragile]
-<<RC2_update, results = "hide", fig.show = "hide">>=
+<<RC2_update, results = "hide", fig.show = "hide", message = FALSE>>=
 RC2 <- rc(MHtab, nd = 2, se = "jackknife", verbose = FALSE, ncpus = 1)
-plot(RC2, conf.int = 0.95)
+plot(RC2, what = "rows", conf.int = 0.95)
 @
 \vspace{-24pt}
 \begin{center}
@@ -786,6 +793,8 @@ anoas(MHtab, nd=2, verbose = FALSE)
 % note that it is not correct to test the one-dimension association
 %      model against the independence model. ??
 % also, do not test uniform association model here, which is actually adequate
+% the AIC and BIC here are based on Multinomial (conditional on total N)
+% so different from values computed from GLM/GNM, but differences are the same
 \end{frame}
 
 \begin{frame}{Other Multiplicative Association Models}
@@ -1019,7 +1028,7 @@ stereotype <- update(stereotype,
 @
 \pause
 We can (re-)define the coefficients of interest after fitting the model
-<<ofInterestsAssign, results = "hide">>=
+<<ofInterestsAssign, results = "hide", message = FALSE>>=
 ofInterest(stereotype) <- pickCoef(stereotype, "Mult")
 @
 \end{frame}
@@ -1028,6 +1037,7 @@ ofInterest(stereotype) <- pickCoef(stereotype, "Mult")
 <<parameters>>=
 parameters(stereotype)
 @
+% parameters() include coef that were constrained
 \end{frame}
 
 \begin{frame}[fragile]
@@ -1097,7 +1107,7 @@ anova(stereotype, stereotype5, stereotype4, stereotype3, stereotype2)
     \end{itemize}
 
     \pause
-    For representatives that always vote ``For'' or ``Against'' the ASA
+    For representatives that always vote ``For'' or ``Against'' the ADA
     position, maximum likelihood will produce infinite $\gamma_s$ estimates, so
     that the fitted probabilities are 0 or 1 (\emph{complete separation}).
 
