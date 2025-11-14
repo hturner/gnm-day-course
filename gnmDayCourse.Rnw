@@ -1281,7 +1281,7 @@ and unexpected features of this plot.
 
 \begin{frame}{Diagonal Reference Terms}
     Diagonal reference terms model the effect of factors with common levels. For
-    factors indexed by $i(f)$, the term is defined as
+    factors indexed by $f$ with levels $i(f)$, the term is defined as
 \[
 \sum_f w_f\gamma_{i(f)}
 \]
@@ -1290,13 +1290,14 @@ effect} for level $l$.
 
 The weights are constrained to be non-negative and to sum to one so that
 $\gamma_l$ is the value for observations with level $l$ across all the factors.
+% i.e. the diagonal effects
 \pause
 Unlike the GNMs models considered so far, which structure interaction terms,
 this structures the main effects of the corresponding factors.
 
 \Rfunction{Dref} specifies the constraints on the weights by defining them as
 \[
-w_f = \frac{e^{\delta_f}}{\sum_i e^{\delta_i}}
+w_f = \frac{e^{\delta_f}}{\sum_f e^{\delta_f}}
 \]
 \end{frame}
 
@@ -1587,8 +1588,7 @@ based on \Robject{origin} and \Robject{destination} (see p\ref{Dref}), with
 \Rfunarg{family}\Rcode{ = binomial}. Look at the summary - does the model fit well? Use
 the \Rfunction{mosaic} function from \Rpackage{vcdExtra} to examine the
 residuals over the \Robject{origin} by \Robject{destination} table. Since the
-data were not provided to \Rfunction{gnm} as a table, you will need to provide a
-formula with the cross-classifying factors.
+data were not provided to \Rfunction{gnm} as a table, \Rfunction{mosaic} will guess the cross-classifying factors unless you specify the \Rfunarg{formula} argument.
 
 3. It could be that the
 diagonal weights should be different for the upwardly mobile. Define a variable
