@@ -1,5 +1,5 @@
 
-\documentclass[beamer,mathserif,xcolor=dvipsnames]{beamer} %ForestGreen
+\documentclass[beamer,xcolor=dvipsnames]{beamer} %ForestGreen
 %\documentclass[handout,mathserif,xcolor=dvipsnames]{beamer}
 %\definecolor{beamerblue}{rgb}{.2, .2, .7}
 %\hypersetup{
@@ -7,6 +7,8 @@
 %  linkcolor = beamerblue,
 %  urlcolor = beamerblue,
 %}
+
+\usefonttheme[onlymath]{serif}
 
 \setbeamertemplate{navigation symbols}{}
 % make text just a little wider
@@ -101,11 +103,12 @@
 
 \begin{document}
 
-%% use knitr!!
+%% use knitr!! (In RStudio Tools > Global Options > Sweave)
 <<setup, include = FALSE>>=
 library(knitr)
 opts_chunk$set(fig.path = 'figure/beamer-', fig.align = 'center',
-               fig.show = 'hold', size = 'footnotesize')
+               fig.show = 'hold', size = 'footnotesize',
+               concordance = TRUE)
 ## markup inline code http://stackoverflow.com/a/16406120/173755
 knit_hooks$set(inline = function(x) {
   if (is.numeric(x)) return(knitr:::format_sci(x, 'latex'))
@@ -639,7 +642,7 @@ is the \emph{intrinsic association parameter}.
 
 \begin{frame}[fragile]{Example: Mental Health Data}
 1660 residents of Manhattan cross-classified by child's
-mental impairment and parents' socioeconomic status \citep{Agre13}.
+mental impairment and parents' socioeconomic status \citep{Agresti2013}.
 <<mentalHealth>>=
 xtabs(count ~ SES + MHS, mentalHealth)
 @
@@ -1118,7 +1121,7 @@ House2001m <- House2001m[informative, ]
 parties <- House2001$party[informative]
 ## Expand the data for statistical modelling:
 House2001v <- as.vector(House2001m)
-House2001f <- data.frame(member = rownames(House2001m),
+House2001f <- data.frame(member = factor(rownames(House2001m)),
                          party = parties,
                          rollCall = factor(rep((1:20),
                              rep(nrow(House2001m), 20))),
@@ -1320,7 +1323,7 @@ be set, e.g.
 
 \begin{frame}[fragile, label = {Dref}]
 <<conformity, echo = FALSE>>=
-conformity <- read.table("E:/Repos/gnm-svn/DataSets/Van_der_Slik/conformity.txt",
+conformity <- read.table("~/Tresorit/Work/Repos/CRAN/gnm-svn/DataSets/Van_der_Slik/conformity.txt",
                          colClasses = c("character", "numeric", "numeric",
                          "factor", "factor", rep("numeric", 6)))
 @
