@@ -1092,7 +1092,7 @@ anova(stereotype, stereotype5, stereotype4, stereotype3, stereotype2)
 
 \begin{frame}[fragile]
     \frametitle{Example: US House of Representatives}
-    \small{Votes on 20 roll calls selected by Americans for Democratic Action (ADA)}
+    \small{Votes on 20 roll calls in 2001 selected by Americans for Democratic Action (ADA)}
 \hspace*{-12pt}\includegraphics[height = 2.9in, width = 4.9in]{house}
 
 \end{frame}
@@ -1210,8 +1210,7 @@ where
 \subsection{Practical III}
 
 \begin{frame}[fragile]{Practical III}
-1. Use \Rfunction{read.table} to read the file \Rcode{Canada.txt} provided on
-your USB stick: data from the Human Mortality Database on male deaths
+1. Use \Rfunction{read.table} to read the file \Rcode{data/Canada.txt}: data from the Human Mortality Database on male deaths
 in Canada between 1921 and 2003. Convert \Robject{Year} and \Robject{Age} to
 factors and fit a simplified version of the Lee-Carter model in which the
 multiplicative term is replaced by a linear \Rcode{Year} effect. Eliminate
@@ -1640,7 +1639,7 @@ Create a custom \Rclass{"nonlin"} function to fit this model.
 \end{frame}
 
 \begin{frame}
-2. Some test data are provided in the file \Rcode{Richard.txt} on your USB stick. Plot \Robject{y}
+2. Some test data are provided in the file \Rcode{data/Richard.txt}. Plot \Robject{y}
 against \Robject{t}. Since \Robject{y} decreases as \Robject{t} increases (i.e.\
 the growth rate is negative) the upper asymptote is the value as $t \to
 -\infty$ and the lower asymptote is the value as $t \to \infty$. Given that if $v
@@ -1661,6 +1660,7 @@ whether one or more of the following simplifications is reasonable:
 \item $A = 0$
 \item $K = 100$
 \end{itemize}
+Note: due to a bug in gnm v 1.1.5 you will need to use parameter indices vs.\ names when constraining > 1 parameter, e.g. \Rcode{constrain = c(1, 5), constrainTo = c(0, 1)} to add the constraints A = 0, v  = 1.
 \end{frame}
 
 \appendix
