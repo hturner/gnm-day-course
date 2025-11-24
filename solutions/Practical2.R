@@ -4,7 +4,7 @@
 #' Step 1
 #' ------
 library(gnm)
-yaish <- as.table(yaish[,,-7])
+yaish <- yaish[,,-7]
 yaish <- aperm(yaish, c("orig", "dest", "educ"))
 
 
