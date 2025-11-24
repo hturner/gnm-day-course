@@ -1624,7 +1624,7 @@ model a significant improvement on the standard diagonal reference model?
 \begin{frame}{Practical IVb}
 1. The generalized logistic function or Richard's curve is defined as
 \[
-y(t) = A + \frac{K - A}{\left(1 + \exp(-B(t - M)\right)^{1/v}}
+y(t) = A + \frac{K - A}{\left(1 + \exp(-B(t - M))\right)^{1/v}}
 \]
 where
 \begin{description}
